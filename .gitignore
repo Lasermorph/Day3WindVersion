@@ -1,2 +1,7 @@
 *.exe
 *.pdb
+Debug/*
+.vs/*
+*.suo
+*.db
+*.ipch

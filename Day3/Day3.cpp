@@ -30,12 +30,16 @@ std::vector<std::string>CheckChar(std::string input)
     return v;
 }
 
-std::string GammaVal(std::vector<std::string> v)
+std::string GammaVal(std::vector<std::string> vGamma)
 {
-    for (size_t i = 0; i < v.size(); i++)
+    std::string s = "";
+    std::string s2 = "";
+
+    for (size_t i = 0; i < vGamma.size(); i++)
     {
-        
-        std::cout << v.at(i) << std::endl;
+        s = vGamma.at(i);
+        s2 = s[1];
+        std::cout << s2 << std::endl;
     }
     return 0;
 }

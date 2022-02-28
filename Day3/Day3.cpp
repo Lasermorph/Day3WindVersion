@@ -30,16 +30,15 @@ std::vector<std::string>CheckChar(std::string input)
     return v;
 }
 
-std::string TextInput(std::string input)
+std::string GammaVal(std::vector<std::string> v)
 {
-    std::string rowNum = "";
-    char character = input.at(0);
-    rowNum += character;
-    std::string gammaRate = "";
-    //std::cout << rowNum << std::endl;
-    return rowNum;
+    for (size_t i = 0; i < v.size(); i++)
+    {
+        
+        std::cout << v.at(i) << std::endl;
+    }
+    return 0;
 }
-
 
 int main()
 {
@@ -56,20 +55,25 @@ int main()
         {
             size++;
             input2 += input;
-            TextInput(input);
             input2 += '\n';
         }
         myFile.close();
     }
+    std::string gammaVal = "";
 
     std::vector<std::string> v = CheckChar(input2);
+    std::vector<std::string> checkG = std::vector<std::string>();
     for (size_t i = 0; i < v.size(); i++)
     {
-        std::cout << v.at(i) << std::endl;
+        checkG = v;
+        GammaVal(checkG);
     }
 
-    v.clear();
+    //std::string frontV = v.front();
+    //std::cout << frontV << std::endl;
 
+    v.clear();
+    
     Car car;
     strcpy_s(car.name, "Bent");
     car.car_id = 1;

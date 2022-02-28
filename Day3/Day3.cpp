@@ -4,36 +4,79 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <vector>
+#include <stdio.h>
+
+typedef unsigned char byte;
+
+typedef struct Car 
+{
+    char name[50];
+    int car_id;
+} Car;
+
+std::vector<std::string>CheckChar(std::string input)
+{
+    std::vector<std::string> v = std::vector<std::string>();
+    size_t pos = input.find('\n');
+
+    while (pos != std::string::npos && pos != -1)
+    {
+        v.push_back(input.substr(0, pos));
+        input = input.substr(pos+1);
+        pos = input.find('\n');
+    }
+    v.push_back(input);
+    return v;
+}
 
 std::string TextInput(std::string input)
 {
-    std::string rowNum;
-    char character = input[0];
-    rowNum.push_back(character);
-    std::string gammaRate;
-    std::cout << rowNum << std::endl;
+    std::string rowNum = "";
+    char character = input.at(0);
+    rowNum += character;
+    std::string gammaRate = "";
+    //std::cout << rowNum << std::endl;
     return rowNum;
 }
 
 
 int main()
 {
-    std::ifstream myFile;
+    std::ifstream myFile = std::ifstream();
     myFile.open("input.txt");
+    std::string input = "";
+    std::string input2 = "";
+
 
     if (myFile.is_open())
     {
-        std::string input;
         int size = 0;
         while (std::getline(myFile, input))
         {
             size++;
+            input2 += input;
             TextInput(input);
+            input2 += '\n';
         }
-        std::cout << size << std::endl;
         myFile.close();
     }
 
+    std::vector<std::string> v = CheckChar(input2);
+    for (size_t i = 0; i < v.size(); i++)
+    {
+        std::cout << v.at(i) << std::endl;
+    }
+
+    v.clear();
+
+    Car car;
+    strcpy_s(car.name, "Bent");
+    car.car_id = 1;
+    ((byte*)&car)[53] = 0x2;
+    std::cout << "id: " << car.car_id << std::endl;
+
+    return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
